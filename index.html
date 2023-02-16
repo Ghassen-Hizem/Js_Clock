@@ -1,12 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Js Clock</title>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-    hello world
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div id="second-hand" class="hand "></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: black;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%;
+    }
+    .hour-hand{
+       transform: 
+       rotate(0deg);
+       
+    }
+    .min-hand{
+     
+        transform: 
+       rotate(45deg);
+       
+    }
+    #second-hand{
+        transform: 
+       rotate(45deg);
+       
+       
+    }
+
+  </style>
+
+  <script>
+    
+    
+    setInterval(()=>{
+        let a = new Date().toLocaleTimeString();
+         arr = a.split(":"); 
+         console.log(arr);
+         let b = 90 + 6*Number(arr[2].split(" ")[0]);
+         let c = 90 + 6*Number(arr[1]);
+         let d = 90+30*Number(arr[0]);
+         console.log(d);
+         document.getElementById("second-hand").style.transform = `rotate(${b}deg)`;
+         document.getElementsByClassName("min-hand")[0].style.transform = `rotate(${c}deg)`;
+         document.getElementsByClassName("hour-hand")[0].style.transform = `rotate(${d}deg)`;
+
+    },1000);
+
+    
+
+  </script>
 </body>
 </html>
